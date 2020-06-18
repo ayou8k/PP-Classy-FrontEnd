@@ -1,0 +1,42 @@
+<div  style="margin: 0px 20px 0px 20px;">
+  <span>{{rows|json}}</span>
+
+  <table width="100%" cellspacing="5px" style="margin: 20px" >
+    <tr *ngFor="let row of rows">
+      <th width="30%" *ngFor="let em of row" >
+        <mat-card routerLink="cours/{{em.id}}">
+          <mat-card-title>{{em.designation}} </mat-card-title>
+          <mat-card-subtitle>
+            {{em.designation}}
+<!--            /element-module/{{em.id}}-->
+          </mat-card-subtitle>
+          <mat-card-content>
+
+            <mat-divider></mat-divider>
+            <mat-list role="list">
+              <mat-list-item role="listitem"> {{em.coeficient}}  du  <strong> Module :<br></strong>
+                <div class="num">
+                  {{em.module.designation}}
+                </div>
+              </mat-list-item>
+              <mat-list-item role="listitem"><strong>Professeurs :<br></strong>
+                <div class="num"> {{em.professeur.nom}} {{em.professeur.prenom}}</div>
+              </mat-list-item>
+            </mat-list>
+          </mat-card-content>
+
+
+        </mat-card>
+      </th>
+    </tr>
+
+  </table>
+
+<!--  <mat-paginator (page)="changePage($event)" [length]="nombre_pages" [pageIndex]="page_index"-->
+<!--                 [pageSizeOptions]="[2, 10, 25, 100]" [pageSize]="page_size"-->
+<!--                 class="full-width">-->
+<!--  </mat-paginator>-->
+
+</div>
+
+

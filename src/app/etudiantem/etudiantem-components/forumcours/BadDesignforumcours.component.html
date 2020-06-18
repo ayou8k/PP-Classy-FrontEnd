@@ -1,0 +1,33 @@
+<p>etudiantem-add works2!</p>
+{{this.rows|json}}
+<table width="100%" cellspacing="5px" style="margin: 20px" >
+  <tr *ngFor="let row of rows">
+    <th width="30%" *ngFor="let publication of row" >
+      <mat-card routerLink="cours/{{publication.id}}">
+        <mat-card-title>{{publication.titre}} </mat-card-title>
+        <mat-card-subtitle>
+          {{publication.type}} : {{publication.contenu}}
+          <!--            /element-module/{{em.id}}-->
+        </mat-card-subtitle>
+        <mat-card-content>
+
+          <mat-divider></mat-divider>
+          <mat-list role="list">
+            <mat-list-item role="listitem"> <strong> Date Publication :<br></strong>
+              <div class="num">
+                {{publication.datePublication.split("T")[0]}} a {{publication.datePublication.split("T")[1].substring(0,8)}}
+              </div>
+            </mat-list-item>
+            <mat-list-item role="listitem"><strong>PJs :<br></strong>
+              <div class="num"> {{publication.pieces_jointes}}</div>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+
+
+
+      </mat-card>
+    </th>
+  </tr>
+
+</table>

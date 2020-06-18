@@ -1,0 +1,64 @@
+<!--<p>etudiantem-add works2!</p>-->
+<!--{{this.rows|json}}-->
+<!--<table width="100%" cellspacing="5px" style="margin: 20px" >-->
+<!--  <tr *ngFor="let row of rows">-->
+<!--    <th width="30%" *ngFor="let publication of row" >-->
+<!--      <mat-card routerLink="cours/{{publication.id}}">-->
+<!--        <mat-card-title>{{publication.titre}} </mat-card-title>-->
+<!--        <mat-card-subtitle>-->
+<!--          {{publication.type}} : {{publication.contenu}}-->
+<!--          &lt;!&ndash;            /element-module/{{em.id}}&ndash;&gt;-->
+<!--        </mat-card-subtitle>-->
+<!--        <mat-card-content>-->
+
+<!--          <mat-divider></mat-divider>-->
+<!--          <mat-list role="list">-->
+<!--            <mat-list-item role="listitem"> <strong> Date Publication :<br></strong>-->
+<!--              <div class="num">-->
+<!--                {{publication.datePublication.split("T")[0]}} a {{publication.datePublication.split("T")[1].substring(0,8)}}-->
+<!--              </div>-->
+<!--            </mat-list-item>-->
+<!--            <mat-list-item role="listitem"><strong>PJs :<br></strong>-->
+<!--              <div class="num"> {{publication.pieces_jointes}}</div>-->
+<!--            </mat-list-item>-->
+<!--          </mat-list>-->
+<!--        </mat-card-content>-->
+
+
+
+<!--      </mat-card>-->
+<!--    </th>-->
+<!--  </tr>-->
+
+<!--</table>-->
+
+
+<div>
+  <mat-grid-list style="margin: 10px auto; width: 90%;"  cols="3" rowHeight="2:1"   gutterSize="10px">
+    <mat-grid-tile class="matgridtile" colspan="2" style=" background:{{this.color}};">
+      {{this.element}} {{this.coef}} {{this.module}}
+      {{this.prof}}
+    </mat-grid-tile>
+    <mat-grid-tile class="matgridtile" >
+     Devoirs non terminer :
+    </mat-grid-tile>
+    <!--  <div *ngFor="let publication of rows">-->
+    <mat-grid-tile class="matgridtile" colspan="2" *ngFor="let publication of rows">
+      {{this.prof}} a publie un {{publication.type}} le  {{publication.datePublication.split("T")[0]}} a {{publication.datePublication.split("T")[1].substring(0,8)}}<br>
+      {{publication.titre}}<br> {{publication.contenu}}
+
+      {{publication.pieces_jointes}}
+
+    </mat-grid-tile>
+    <!--  </div>-->
+
+<!--    <mat-grid-tile   rowspan="2">  </mat-grid-tile>-->
+<!--    <mat-grid-tile  class="matgridtile" colspan="2"> 5  </mat-grid-tile>-->
+<!--    <mat-grid-tile >  </mat-grid-tile>-->
+<!--    <mat-grid-tile  class="matgridtile" colspan="2" rowspan="3"> 7  </mat-grid-tile>-->
+<!--    <mat-grid-tile rowspan="3">   </mat-grid-tile>-->
+<!--    <mat-grid-tile class="matgridtile" colspan="2">  9  </mat-grid-tile>-->
+  </mat-grid-list>
+</div>
+
+

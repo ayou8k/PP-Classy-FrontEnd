@@ -11,6 +11,8 @@ export class AppComponent {
 
     links = [
     { path: '/', icon: 'home', title: 'Home'},
+    { path: 'etudiantem', icon: 'category', title: 'elements module'},
+    // { path: 'etudiantem', icon: 'category', title: 'msamen'},
     // { path: '/customers', icon: 'face', title: 'Customer'},
     // { path: '/projects', icon: 'work', title: 'Projects'},
   ]
