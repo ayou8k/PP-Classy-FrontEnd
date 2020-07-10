@@ -6,40 +6,40 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class EtudaintEM<T> {
-  classe = 2
-  model = 'classes/' + this.classe + "/element_modules?projection=em";
+  class =1
+  studentid="F137318699"
+  EmModel = 'classes/' + this.class + "/element_modules?projection=em";
+  Devoir = 'noteDevoirs/' + this.class + "/element_modules?projection=em";
   BASE_URL = 'http://localhost:8080/';
+  private etudiantid="F137318699";
 
   constructor(public http: HttpClient) {
 
   }
-
+  getClasse(){
+    let EtudiantModel = 'etudiants/' + this.etudiantid + "?projection=et";
+    return this.http.get(this.BASE_URL+EtudiantModel)
+  }
   all(): any {
-    console.log('all');
     return this.http.get(this.getUrl());
   }
-
   getUrl() {
-    return `${this.BASE_URL}${this.model}`;
-  }
 
+    return `${this.BASE_URL}${this.EmModel}`;
+  }
   private getUrlId(id: any) {
+
     return `${this.getUrl()}/${id}`;
   }
 
   getPaginatorUrl(index: number, page_size: number) {
-    // index++;
-    console.log(`${this.BASE_URL}${this.model}&page=${index}&size=${page_size}`);
-    return `${this.BASE_URL}${this.model}&page=${index}&size=${page_size}`;
+    console.log(`${this.BASE_URL}${this.EmModel}&page=${index}&size=${page_size}`)
+    return `${this.BASE_URL}${this.EmModel}&page=${index}&size=${page_size}`;
   }
 
-  getPaginatorSearchURL(index: number, page_size: number, searchTerm: string) {
-    // index++;
-    return `${this.BASE_URL}${this.model}&q=${searchTerm}&page=${index}&size=${page_size}`;
 
-
-  }
   getByPage(index: number, searchTerm: string, page_size: number): Observable<any> {
+
     if (searchTerm.trim().length > 0)
       this.all();
 
@@ -47,13 +47,11 @@ export class EtudaintEM<T> {
       return this.http.get<any>(this.getPaginatorUrl(index, page_size));
   }
 
-  getById(id: string) {
-    return this.http.get(this.getUrlId(id));
-  }
+  // getById(id: string) {
+  //
+  //   return this.http.get(this.getUrlId(id));
+  // }
 
-  search(index: number, page_size: number, searchTerm: string) {
-    console.log(this.getPaginatorSearchURL(index,page_size,searchTerm));
-    return this.http.get<any>(this.getPaginatorSearchURL(index, page_size, searchTerm));
-  }
+
 
 }

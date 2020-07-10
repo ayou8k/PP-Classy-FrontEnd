@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+// import {EtudiantemListComponent} from './etudiantem/etudiantem-components/etudiantem-list/etudiantem-list.component';
 import {EtudiantemListComponent} from './etudiantem/etudiantem-components/etudiantem-list/etudiantem-list.component';
+import {ForumcoursComponent} from './etudiantem/etudiantem-components/forumcours/forumcours.component';
 
 const routes: Routes = [
-  { path: 'class', loadChildren: () => import('./classes/classes.module').then(m => m.ClassesModule) },
+  // { path: 'class', loadChildren: () => import('./classes/classes.module').then(m => m.ClassesModule) },
   { path: 'etudiantem', loadChildren: () => import('./etudiantem/etudiantem.module').then(m => m.EtudiantemModule) },
-  { path: 'elementmodule', loadChildren: () => import('./elementmodule/elementmodule.module').then(m => m.ElementmoduleModule) },
+  // { path: 'elementmodule', loadChildren: () => import('./elementmodule/elementmodule.module').then(m => m.ElementmoduleModule) },
+  { path: 'devoirs', loadChildren: () => import('./devoir/devoir.module').then(m => m.DevoirModule) },
   // { path: 'class', loadChildren: () => import('./etudiantem/etudiantem.module').then(m => m.EtudiantemModule) },
   // { path: 'projects', loadChildren: () => import('./projects/projects.module').then(m => m.ProjectsModule) },
   // { path: 'customers', loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule) },

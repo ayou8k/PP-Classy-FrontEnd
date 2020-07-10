@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from './material/material.module';
 import {AppRoutingModule} from './app-routing.module';
-import {ClassesModule} from './classes/classes.module';
+import {EtudiantemModule} from './etudiantem/etudiantem.module';
 import {HttpClientModule} from '@angular/common/http';
 
 
@@ -17,7 +17,7 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    ClassesModule,
+    EtudiantemModule,
     MaterialModule,
     HttpClientModule,
 

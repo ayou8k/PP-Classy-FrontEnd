@@ -1,0 +1,48 @@
+<p>devoir-add works!</p>
+<div class="container">
+  <div class="col-100">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <h1>
+            {{title}}
+          </h1>
+        </mat-card-title>
+      </mat-card-header>
+
+
+      <form (submit)="createDevoir(currentDevoir)">
+        <mat-card-content>
+          <mat-form-field class="full-width">
+            <input [(ngModel)]="currentDevoir.devoir" matInput name="devoir" placeholder="devoir" type="number" value="{{this.devoirid}}">
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input [(ngModel)]="currentDevoir.etudiant" matInput name="etudiant" placeholder="etudiant" type="text" value="{{this.studentid}}">
+          </mat-form-field>
+
+
+  <mat-form-field class="full-width">
+            <input [(ngModel)]="currentDevoir.pieces_jointes" matInput name="pieces_jointes" placeholder="pieces_jointes" type="text">
+          </mat-form-field>
+
+  <mat-form-field class="full-width">
+              <input [(ngModel)]="currentDevoir.note" matInput name="note" placeholder="note" type="number">
+          </mat-form-field>
+
+  <mat-form-field class="full-width">
+            <input [(ngModel)]="currentDevoir.dateSoumission" matInput name="dateSoumission" placeholder="dateSoumission" type="datetime-local">
+          </mat-form-field>
+
+<!--          <mat-form-field class="full-width">-->
+<!--            <input [(ngModel)]="currentDevoir.heureSoumission" matInput name="heureSoumission" placeholder="Heure Soumission" type="time">-->
+<!--          </mat-form-field>-->
+
+        </mat-card-content>
+        <mat-card-actions>
+          <button color="primary" mat-button type="submit">Save</button>
+          <button (click)="cancel()"  mat-button type="button">Go Back</button>
+        </mat-card-actions>
+      </form>
+    </mat-card>
+  </div>
+</div>

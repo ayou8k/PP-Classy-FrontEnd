@@ -28,19 +28,27 @@ export class EtudiantemListComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   constructor(private etudem: EtudaintEM<any>) {
+
   }
 
   ngOnInit(): void {
-    this.getDataSource();
+    // this.etudem.class=2
+    this.etudem.getClasse().subscribe((data:any)=> {
+      let classe = data.classe.id
+      console.log("la classe est "+classe)
+      this.etudem.EmModel = 'classes/' + classe + "/element_modules?projection=em"
+      this.getDataSource();
+
+      console.log(this.etudem.EmModel + "dela7")
+    })
+
+
 
   }
 
   getDataSource() {
-    // this.dataSource$ = ;
-    this.etudem.getByPage(0, '', this.page_size).subscribe(data => {
-      // this.nombre_pages = data.page.totalElements;
-      console.log(data._embedded.element_modules)
 
+    this.etudem.getByPage(0, '', this.page_size).subscribe(data => {
       this.groupEm(data._embedded.element_modules)
 
     }, error => {
@@ -52,9 +60,8 @@ export class EtudiantemListComponent implements OnInit {
   private groupEm(element_modules: any) {
     element_modules.forEach((value, index) => {
       this.groupe.push(value);
-      console.log(value)
 
-      if (index == 2) {
+      if ((index+1)%2==0) {
         this.rows.push(this.groupe);
         this.groupe = [];
       }
@@ -66,7 +73,6 @@ export class EtudiantemListComponent implements OnInit {
     this.etudem.getByPage(event.pageIndex, '', event.pageSize).subscribe(
       (resp) => {
         // this.nombre_pages = resp.page.totalElements;
-        console.log(resp._embedded.element_modules)
         this.groupEm(resp._embedded.element_modules)
       }
     );

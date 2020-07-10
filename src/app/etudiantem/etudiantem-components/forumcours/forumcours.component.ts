@@ -26,7 +26,8 @@ export class ForumcoursComponent implements OnInit {
   coef='';
   prof='';
   color= '';
-
+  upcoming_devoirs=[];
+  x:any
 
   constructor(private etudem: EtudaintEM<any>, private route: ActivatedRoute) {
   }
@@ -44,16 +45,13 @@ export class ForumcoursComponent implements OnInit {
         }
       })
       this.Ultimate2(data._embedded.element_modules[this.index].publication_Cours,"cours")
-      this.Ultimate2(data._embedded.element_modules[this.index].publication_Devoirs,"devoirs")
+      this.Ultimate2(data._embedded.element_modules[this.index].publication_Devoirs,"devoir")
       this.Ultimate2(data._embedded.element_modules[this.index].publication_Projets,"projet")
-      this.order(this.rows);
-// console.log(this.rows);
-      this.rows.sort((a: any, b: any) => {
-        console.log(a.datePublication)
-        return (new Date(a.datePublication)).getTime() - (new Date(b.datePublication)).getTime();
+      this.AfterDate(data._embedded.element_modules[this.index].publication_Devoirs)
 
+      this.rows.sort((a: any, b: any) => {
+        return (new Date(a.datePublication)).getTime() - (new Date(b.datePublication)).getTime();
       });
-      // console.log(this.rows);
 
     }, error => {
       console.log(error);
@@ -64,9 +62,7 @@ export class ForumcoursComponent implements OnInit {
     this.getDataSource();
 
   }
-  private getTime(date?: Date) {
-    return date != null ? date.getTime() : 0;
-  }
+
 /*  private groupEm(element_modules: any) {
     element_modules.forEach((value, index) => {
       console.log(element_modules.type)
@@ -103,12 +99,41 @@ export class ForumcoursComponent implements OnInit {
   private Ultimate2(element_modules: any,type: string) {
     element_modules.forEach((value) => {
       value.type=type
+      if(type=="devoir"){
+
+      }
       this.rows.push(value);
     });
   }
 
-  private order(rows: any[]) {
+  private AfterDate(publication_Devoirs: any) {
 
+    publication_Devoirs.forEach((value) => {
+      let date=new Date()
+let x=this.dateDiff(date.toISOString(),value.durreeDevoir)
+      // let Timediff x=this.dateDiff(date.toISOString(),value.durreeDevoir)
+      if(x.diff>0) {
+        value.time=x
+        this.upcoming_devoirs.push(value)
+      }
+      });
   }
 
+  private nonsubmitted(publication_Devoirs){
+    publication_Devoirs.forEach((value) => {
+      value;
+    })
+
+    }
+  private dateDiff( str1, str2 ) :any {
+    var diff = Date.parse( str2 ) - Date.parse( str1 );
+    return isNaN( diff ) ? NaN : {
+      diff : diff,
+      ms : Math.floor( diff            % 1000 ),
+      s  : Math.floor( diff /     1000 %   60 ),
+      m  : Math.floor( diff /    60000 %   60 ),
+      h  : Math.floor( diff /  3600000 %   24 ),
+      d  : Math.floor( diff / 86400000        )
+    };
+  }
 }

@@ -5,12 +5,12 @@ import { EtudaintEM } from './data/etudaint-e-m.service';
 import { EtudiantemRoutingModule } from './etudiantem-routing.module';
 import { EtudiantemListComponent } from './etudiantem-components/etudiantem-list/etudiantem-list.component';
 import { ForumcoursComponent } from './etudiantem-components/forumcours/forumcours.component';
-import { EtudiantemEditComponent } from './etudiantem-components/etudiantem-edit/etudiantem-edit.component';
+// import { EtudiantemEditComponent } from './etudiantem-components/etudiantem-edit/etudiantem-edit.component';
 import {MaterialModule} from '../material/material.module';
 import {FormsModule} from '@angular/forms';
 
 @NgModule({
-  declarations: [EtudiantemListComponent, ForumcoursComponent, EtudiantemEditComponent],
+  declarations: [EtudiantemListComponent, ForumcoursComponent],
   imports: [
     CommonModule,
     EtudiantemRoutingModule,
@@ -18,7 +18,7 @@ import {FormsModule} from '@angular/forms';
     FormsModule
   ],
   providers :[
-    EtudaintEM
+    EtudaintEM,
   ]
 })
 export class EtudiantemModule { }
